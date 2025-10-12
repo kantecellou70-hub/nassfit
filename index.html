@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NASSFIT — Tarifs & Contact</title>
+  <meta name="description" content="NASSFIT — Tarifs d'abonnement, conditions et contact" />
+  <style>
+    :root{
+      --yellow: #FFCC00;
+      --dark: #1f1f1f;
+      --muted: #666;
+      --card-bg: #fff9e6;
+      --radius: 14px;
+      --maxwidth: 880px;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #fff 0%, #fffef8 60%);
+      color:var(--dark);
+      -webkit-font-smoothing:antialiased;
+    }
+    
+    .hidden{display:none !important;}
+    
+    /* ========== SITE PUBLIC ========== */
+    .page{
+      max-width:var(--maxwidth);
+      margin:18px auto;
+      padding:18px;
+    }
+
+    header{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      background: linear-gradient(90deg, var(--yellow), #ffd94d);
+      padding:14px;
+      border-radius:var(--radius);
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+    .logo{
+      width:64px;
+      height:64px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:var(--dark);
+      flex-shrink:0;
+      border:2px dashed rgba(0,0,0,0.08);
+      overflow:hidden;
+      background:white;
+    }
+    .logo img {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    header h1{margin:0;font-size:20px;letter-spacing:1px;}
+    header p{margin:0;font-size:13px;color:var(--dark);opacity:0.9;}
+
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media(min-width:880px){
+      .grid{grid-template-columns: 1fr 360px;}
+    }
+    .card{
+      background:var(--card-bg);
+      padding:14px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+      border:1px solid rgba(0,0,0,0.03);
+    }
+
+    #pricing table{width:100%;border-collapse:collapse;}
+    #pricing th, #pricing td{padding:10px 8px;text-align:left;font-size:15px;}
+    #pricing th{font-size:13px;color:var(--muted);font-weight:600;}
+    #pricing tr + tr td{border-top:1px dashed rgba(0,0,0,0.06);}
+    .price{font-weight:700;color:var(--dark);text-align:right;white-space:nowrap;}
+
+    .conditions ul{margin:8px 0 0 18px;padding:0;color:var(--muted);line-height:1.45;}
+
+    .contact-actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;}
+
+    .contact-bg {
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 0;
+    }
+    .contact-bg * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:0;
+      padding:10px 12px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      text-decoration:none;
+    }
+    .btn-call{background:var(--dark);color:white;box-shadow:0 6px 16px rgba(0,0,0,0.12);}
+    .btn-whatsapp{background: #25D366;color:white;box-shadow:0 6px 16px rgba(0,0,0,0.12);}
+    .btn-email{background:#2D9CDB;color:white;box-shadow:0 6px 16px rgba(0,0,0,0.12);}
+    .btn svg{width:18px;height:18px;flex-shrink:0;stroke:currentColor;fill:none;}
+
+    .sidebar {display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;}
+    .qr-box{background:white;padding:12px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.06);width:210px;}
+    .small{font-size:13px;color:var(--muted);}
+
+    footer{margin-top:18px;text-align:center;padding:12px;color:var(--muted);font-size:13px;}
+
+    .features{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+    .chip{background:rgba(0,0,0,0.06);padding:8px 10px;border-radius:999px;font-weight:600;font-size:13px;}
+
+    /* ========== ADMIN ========== */
+    .login-screen{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:20px;
+    }
+    
+    .login-box{
+      background:white;
+      padding:40px;
+      border-radius:var(--radius);
+      box-shadow:0 10px 40px rgba(0,0,0,0.1);
+      max-width:420px;
+      width:100%;
+    }
+    
+    .login-box h2{margin:0 0 10px 0;text-align:center;color:var(--dark);}
+    .login-box p{text-align:center;color:var(--muted);margin:0 0 30px 0;font-size:14px;}
+    
+    .login-form .form-group{margin-bottom:20px;}
+    .login-form label{display:block;font-weight:600;margin-bottom:8px;font-size:14px;}
+    .login-form input{
+      width:100%;
+      padding:14px;
+      border:2px solid rgba(0,0,0,0.1);
+      border-radius:10px;
+      font-size:15px;
+      font-family:inherit;
+      transition:border-color 0.2s;
+    }
+    .login-form input:focus{outline:none;border-color:var(--yellow);}
+    .login-form button{
+      width:100%;
+      background:var(--yellow);
+      color:var(--dark);
+      border:none;
+      padding:14px;
+      border-radius:10px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      transition:all 0.2s;
+      box-shadow:0 4px 12px rgba(255,204,0,0.3);
+    }
+    .login-form button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(255,204,0,0.4);}
+    
+    .error-message{
+      background:#f8d7da;
+      color:#721c24;
+      padding:12px;
+      border-radius:8px;
+      margin-bottom:20px;
+      font-size:14px;
+      display:none;
+    }
+    .error-message.show{display:block;}
+    
+    .password-hint{
+      background:#fff3cd;
+      border:1px solid #ffc107;
+      color:#856404;
+      padding:12px;
+      border-radius:8px;
+      margin-top:20px;
+      font-size:13px;
+      text-align:center;
+    }
+    
+    .admin-container{max-width:1000px;margin:20px auto;padding:0 20px;}
+    
+    .admin-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:white;
+      padding:20px;
+      border-radius:var(--radius);
+      box-shadow:0 4px 16px rgba(0,0,0,0.08);
+      margin-bottom:20px;
+    }
+    .admin-header h1{margin:0;font-size:24px;}
+    
+    .btn-logout{
+      background:var(--dark);
+      color:white;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+    }
+    
+    .admin-panel{
+      background:white;
+      padding:30px;
+      border-radius:var(--radius);
+      box-shadow:0 6px 24px rgba(0,0,0,0.08);
+      max-height:calc(100vh - 200px);
+      overflow-y:auto;
+    }
+    
+    .form-section{
+      margin-bottom:32px;
+      padding-bottom:32px;
+      border-bottom:2px dashed rgba(0,0,0,0.08);
+    }
+    .form-section:last-child{border-bottom:none;}
+    .form-section h3{margin:0 0 20px 0;font-size:18px;}
+    
+    .form-group{margin-bottom:20px;}
+    
+    label{display:block;font-weight:600;margin-bottom:8px;font-size:14px;}
+    
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="url"],
+    input[type="number"],
+    input[type="password"],
+    textarea{
+      width:100%;
+      padding:12px;
+      border:2px solid rgba(0,0,0,0.1);
+      border-radius:8px;
+      font-size:15px;
+      font-family:inherit;
+      transition:border-color 0.2s;
+    }
+    input:focus,textarea:focus{outline:none;border-color:var(--yellow);}
+    textarea{resize:vertical;min-height:80px;}
+    
+    small{color:var(--muted);font-size:12px;display:block;margin-top:4px;}
+    
+    .pricing-table{width:100%;border-collapse:collapse;margin-top:10px;}
+    .pricing-table th{
+      text-align:left;
+      padding:10px;
+      background:rgba(0,0,0,0.03);
+      font-size:13px;
+      font-weight:600;
+      border-bottom:2px solid rgba(0,0,0,0.06);
+    }
+    .pricing-table td{padding:10px;border-bottom:1px solid rgba(0,0,0,0.05);}
+    .pricing-table input{width:100%;}
+    
+    .btn-primary{
+      background:var(--yellow);
+      color:var(--dark);
+      border:none;
+      padding:16px 32px;
+      border-radius:10px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      box-shadow:0 4px 12px rgba(255,204,0,0.3);
+      transition:all 0.2s;
+      width:100%;
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(255,204,0,0.4);}
+    
+    .success-message{
+      background:#d4edda;
+      color:#155724;
+      padding:16px;
+      border-radius:8px;
+      margin-bottom:20px;
+      display:none;
+      font-weight:600;
+    }
+    .success-message.show{display:block;}
+  </style>
+</head>
+<body>
+  
+  <!-- ========== SITE PUBLIC ========== -->
+  <div id="publicSite">
+    <main class="page">
+      <header>
+        <div class="logo" id="logo">LOGO</div>
+        <div>
+          <h1 id="clubName">NASSFIT</h1>
+          <p id="clubSubtitle">Club sportif — entraînements & coaching</p>
+        </div>
+      </header>
+
+      <div class="grid">
+        <section class="card" id="pricing">
+          <h2 style="margin:0 0 6px 0;">Tarifs d'abonnement</h2>
+          <p class="small" style="margin:0 0 12px 0;">Tarifs exprimés en GNF.</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Formule</th>
+                <th style="text-align:right">Prix</th>
+              </tr>
+            </thead>
+            <tbody id="pricingTable"></tbody>
+          </table>
+
+          <div style="margin-top:12px;">
+            <strong>Remarques :</strong>
+            <ul>
+              <li id="pricingRemarks"></li>
+            </ul>
+          </div>
+
+          <hr style="margin:14px 0; border:none; border-top:1px dashed rgba(0,0,0,0.06)" />
+
+          <div class="conditions">
+            <h3 style="margin:0 0 8px 0;">Conditions / Informations générales</h3>
+            <ul id="conditionsList"></ul>
+          </div>
+
+          <div style="margin-top:12px;">
+            <strong>Services inclus :</strong>
+            <div class="features" id="servicesList"></div>
+          </div>
+        </section>
+
+        <aside class="card sidebar contact-bg" id="contactSection">
+          <div>
+            <h3 style="margin:0 0 8px 0;">Contact</h3>
+            <p class="small" style="margin:0;">Appelez, écrivez via WhatsApp ou contactez-nous par Mail</p>
+            <div class="contact-actions">
+              <a class="btn btn-call" id="phoneBtn" href="tel:+224627436896">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12.9.36 1.77.7 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.49a2 2 0 0 1 2.11-.45c.83.34 1.7.58 2.6.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <span id="phoneText">Appeler</span>
+              </a>
+
+              <a class="btn btn-whatsapp" id="whatsappBtn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.7 17.3a10 10 0 1 0-2.4 2.4l1.9 1.9 2.5-0.7-1.9-1.9zM17 14.1c-0.3-0.2-1.7-0.9-1.9-1-0.2-0.1-0.4-0.2-0.6 0-0.2 0.2-0.7 0.9-0.9 1.1-0.2 0.2-0.4 0.2-0.7 0.1-0.6-0.2-1.3-0.8-2.1-1.6-0.8-0.8-1.4-1.5-1.6-2.1-0.1-0.3 0-0.5 0.1-0.7 0.2-0.2.9-0.7 1.1-0.9 0.1-0.2 0.1-0.5 0-0.7-0.1-0.2-0.8-1.6-1-1.9-0.2-0.3-0.6-0.3-0.8-0.3-0.2 0-0.5 0-0.8 0-0.3 0-0.7 0.1-1 0.5-0.3 0.4-1.1 1.1-1.1 2.6s1.1 3 1.2 3.2c0.2 0.3 2.1 3.3 5 4.5 2.9 1.2 2.9 0.8 3.4 0.8 0.5 0 1.6-0.6 1.8-1.2 0.2-0.6 0.2-1.2 0.1-1.3-0.1-0.1-0.3-0.2-0.6-0.4z"/>
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+
+              <a class="btn btn-email" id="emailBtn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 4h16v16H4z" stroke="none" fill="none"/>
+                  <path d="M22 6v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/>
+                  <path d="M22 6l-10 7L2 6" />
+                </svg>
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="qr-box">
+            <div id="qrcode"></div>
+            <p class="small" style="margin-top:10px;">
+              Scanner pour ouvrir :<br />
+              <strong id="qrTarget" style="word-break:break-all;"></strong>
+            </p>
+          </div>
+
+          <div>
+            <p class="small">
+              <strong>Adresse :</strong> <span id="addressText"></span><br />
+              <a id="mapsLink" href="#" target="_blank" rel="noopener noreferrer" 
+                 style="color:var(--dark); font-weight:700; text-decoration:none;">
+                Voir La Localisation →
+              </a>
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <footer id="footerText"></footer>
+    </main>
+  </div>
+
+  <!-- ========== ADMIN LOGIN ========== -->
+  <div id="adminLogin" class="hidden">
+    <div class="login-screen">
+      <div class="login-box">
+        <h2>🔐 Connexion Admin</h2>
+        <p>Accès réservé aux administrateurs NASSFIT</p>
+        
+        <div class="error-message" id="loginError">
+          ❌ Nom d'utilisateur ou mot de passe incorrect
+        </div>
+        
+        <form class="login-form" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label>Nom d'utilisateur</label>
+            <input type="text" id="username" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Mot de passe</label>
+            <input type="password" id="password" required>
+          </div>
+          
+          <button type="submit">Se connecter</button>
+        </form>
+        
+        <div class="password-hint">
+          💡 <strong>Identifiants par défaut :</strong><br>
+          admin / nassfit2025
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ADMIN PANEL ========== -->
+  <div id="adminPanel" class="hidden">
+    <div class="admin-container">
+      <div class="admin-header">
+        <h1>⚙ Administration NASSFIT</h1>
+        <button class="btn-logout" onclick="handleLogout()">🚪 Déconnexion</button>
+      </div>
+      
+      <div class="admin-panel">
+        <div class="success-message" id="successMsg">✅ Modifications enregistrées avec succès !</div>
+        
+        <form id="adminForm" onsubmit="saveData(event)">
+          
+          <!-- Security -->
+          <div class="form-section">
+            <h3>🔒 Paramètres de Sécurité</h3>
+            <div class="form-group">
+              <label>Nom d'utilisateur admin</label>
+              <input type="text" id="admin_username" value="admin" required>
+            </div>
+            <div class="form-group">
+              <label>Nouveau mot de passe</label>
+              <input type="password" id="admin_password" placeholder="Laissez vide pour ne pas changer">
+              <small>Minimum 6 caractères</small>
+            </div>
+          </div>
+          
+          <!-- Club Info -->
+          <div class="form-section">
+            <h3>📋 Informations du Club</h3>
+            <div class="form-group">
+              <label>Nom du club</label>
+              <input type="text" id="clubName_admin" value="NASSFIT" required>
+            </div>
+            <div class="form-group">
+              <label>Sous-titre</label>
+              <input type="text" id="clubSubtitle_admin" value="Club sportif — entraînements & coaching" required>
+            </div>
+            <div class="form-group">
+              <label>URL du logo (optionnel)</label>
+              <input type="url" id="logoUrl_admin" placeholder="https://exemple.com/logo.png">
+              <small>Laissez vide pour afficher "LOGO"</small>
+            </div>
+          </div>
+          
+          <!-- Pricing -->
+          <div class="form-section">
+            <h3>💰 Tarifs d'Abonnement</h3>
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th style="width:60%">Formule</th>
+                  <th>Prix (GNF)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Inscription (frais unique)</td>
+                  <td><input type="number" id="price_inscription" value="80000" required></td>
+                </tr>
+                <tr>
+                  <td>1 semaine</td>
+                  <td><input type="number" id="price_1week" value="125000" required></td>
+                </tr>
+                <tr>
+                  <td>2 semaines</td>
+                  <td><input type="number" id="price_2weeks" value="250000" required></td>
+                </tr>
+                <tr>
+                  <td>1 mois — 15 séances</td>
+                  <td><input type="number" id="price_1month_15" value="300000" required></td>
+                </tr>
+                <tr>
+                  <td>1 mois — accès quotidien</td>
+                  <td><input type="number" id="price_1month_daily" value="500000" required></td>
+                </tr>
+                <tr>
+                  <td>Journalier</td>
+                  <td><input type="number" id="price_daily" value="50000" required></td>
+                </tr>
+                <tr>
+                  <td>Annuel</td>
+                  <td><input type="number" id="price_annual" value="6000000" required></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="form-group" style="margin-top:20px;">
+              <label>Remarques sur les tarifs</label>
+              <textarea id="pricing_remarks">Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l'inscription.</textarea>
+            </div>
+          </div>
+          
+          <!-- Horaires -->
+          <div class="form-section">
+            <h3>🕐 Horaires</h3>
+            <div class="form-group">
+              <label>Lundi — Vendredi</label>
+              <input type="text" id="hours_weekday" value="07h à 22h" required>
+            </div>
+            <div class="form-group">
+              <label>Samedi</label>
+              <input type="text" id="hours_saturday" value="09h à 22h" required>
+            </div>
+            <div class="form-group">
+              <label>Dimanche</label>
+              <input type="text" id="hours_sunday" value="09h à 15h" required>
+            </div>
+          </div>
+          
+          <!-- Conditions -->
+          <div class="form-section">
+            <h3>📝 Conditions & Informations</h3>
+            <div class="form-group">
+              <label>Inscription</label>
+              <textarea id="condition_inscription">Présenter une pièce d'identité et régler les frais d'inscription (80 000 GNF).</textarea>
+            </div>
+            <div class="form-group">
+              <label>Tenue</label>
+              <textarea id="condition_tenue">Tenue de sport exigée — chaussures propres à porter uniquement dans la salle.</textarea>
+            </div>
+            <div class="form-group">
+              <label>Hygiène</label>
+              <input type="text" id="condition_hygiene" value="Serviette Obligatoire" required>
+            </div>
+          </div>
+          
+          <!-- Services -->
+          <div class="form-section">
+            <h3>✨ Services Inclus</h3>
+            <div class="form-group">
+              <label>Service 1</label>
+              <input type="text" id="service1" value="Coaching" required>
+            </div>
+            <div class="form-group">
+              <label>Service 2</label>
+              <input type="text" id="service2" value="Accès équipements" required>
+            </div>
+            <div class="form-group">
+              <label>Service 3</label>
+              <input type="text" id="service3" value="Suivi mensuel" required>
+            </div>
+            <div class="form-group">
+              <label>Service 4</label>
+              <input type="text" id="service4" value="Programme personnalisé" required>
+            </div>
+          </div>
+          
+          <!-- Contact -->
+          <div class="form-section">
+            <h3>📞 Contact</h3>
+            <div class="form-group">
+              <label>Téléphone</label>
+              <input type="tel" id="phone" value="+224627436896" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="email" value="nassfit224@gmail.com" required>
+            </div>
+            <div class="form-group">
+              <label>Message WhatsApp par défaut</label>
+              <input type="text" id="whatsapp_msg" value="Bonjour NASSFIT — J'ai une question sur les tarifs" required>
+            </div>
+            <div class="form-group">
+              <label>Adresse physique</label>
+              <input type="text" id="address" value="Lambayi, Conakry" required>
+            </div>
+            <div class="form-group">
+              <label>Lien Google Maps</label>
+              <input type="url" id="maps_link" value="https://maps.app.goo.gl/K2kkYigAmH5RQqWT6" required>
+            </div>
+            <div class="form-group">
+              <label>Image de fond (section contact)</label>
+              <input type="url" id="contact_bg_image" placeholder="https://exemple.com/image.jpg">
+              <small>Laissez vide pour fond par défaut</small>
+            </div>
+          </div>
+          
+          <!-- QR Code -->
+          <div class="form-section">
+            <h3>📱 QR Code</h3>
+            <div class="form-group">
+              <label>URL cible du QR Code</label>
+              <input type="url" id="qr_url" value="https://nassfit-demo.netlify.app" required>
+            </div>
+          </div>
+          
+          <!-- Footer -->
+          <div class="form-section">
+            <h3>🔖 Pied de Page</h3>
+            <div class="form-group">
+              <label>Texte du footer</label>
+              <input type="text" id="footer_text" value="© NASSFIT" required>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn-primary">💾 Enregistrer toutes les modifications</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const STORAGE_KEY = 'nassfit_data';
+    const AUTH_KEY = 'nassfit_auth';
+    const DEFAULT_USERNAME = 'admin';
+    const DEFAULT_PASSWORD = 'nassfit2025';
+    
+    // Check URL hash on load
+    window.addEventListener('DOMContentLoaded', function() {
+      checkRoute();
+      loadSiteData();
+    });
+    
+    // Listen to hash changes
+    window.addEventListener('hashchange', checkRoute);
+    
+    function checkRoute() {
+      const hash = window.location.hash;
+      
+      if (hash === '#admin') {
+        // Check if logged in
+        const isLoggedIn = sessionStorage.getItem(AUTH_KEY) === 'true';
+        
+        if (isLoggedIn) {
+          showAdminPanel();
+        } else {
+          showAdminLogin();
+        }
+      } else {
+        showPublicSite();
+      }
+    }
+    
+    function showPublicSite() {
+      document.getElementById('publicSite').classList.remove('hidden');
+      document.getElementById('adminLogin').classList.add('hidden');
+      document.getElementById('adminPanel').classList.add('hidden');
+      document.title = 'NASSFIT — Tarifs & Contact';
+    }
+    
+    function showAdminLogin() {
+      document.getElementById('publicSite').classList.add('hidden');
+      document.getElementById('adminLogin').classList.remove('hidden');
+      document.getElementById('adminPanel').classList.add('hidden');
+      document.title = 'NASSFIT — Connexion Admin';
+    }
+    
+    function showAdminPanel() {
+      document.getElementById('publicSite').classList.add('hidden');
+      document.getElementById('adminLogin').classList.add('hidden');
+      document.getElementById('adminPanel').classList.remove('hidden');
+      document.title = 'NASSFIT — Administration';
+      loadAdminData();
+    }
+    
+    // Handle login
+    function handleLogin(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      // Get saved credentials
+      const saved = localStorage.getItem(STORAGE_KEY);
+      let savedUsername = DEFAULT_USERNAME;
+      let savedPassword = DEFAULT_PASSWORD;
+      
+      if (saved) {
+        const data = JSON.parse(saved);
+        if (data.admin_username) savedUsername = data.admin_username;
+        if (data.admin_password_hash) savedPassword = data.admin_password_hash;
+      }
+      
+      if (username === savedUsername && password === savedPassword) {
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        document.getElementById('loginError').classList.remove('show');
+        showAdminPanel();
+      } else {
+        document.getElementById('loginError').classList.add('show');
+      }
+    }
+    
+    // Handle logout
+    function handleLogout() {
+      if (confirm('Êtes-vous sûr de vouloir vous déconnecter ?')) {
+        sessionStorage.removeItem(AUTH_KEY);
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        window.location.hash = '';
+      }
+    }
+    
+    // Load site data (public)
+    function loadSiteData() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      const data = saved ? JSON.parse(saved) : getDefaultData();
+      
+      // Logo
+      const logoEl = document.getElementById('logo');
+      if (data.logoUrl) {
+        logoEl.innerHTML = <img src="${data.logoUrl}" alt="Logo">;
+      } else {
+        logoEl.textContent = 'LOGO';
+      }
+      
+      // Header
+      document.getElementById('clubName').textContent = data.clubName;
+      document.getElementById('clubSubtitle').textContent = data.clubSubtitle;
+      
+      // Pricing
+      document.getElementById('pricingTable').innerHTML = `
+        <tr><td>Inscription (frais unique)</td><td class="price">${formatPrice(data.price_inscription)} GNF</td></tr>
+        <tr><td>1 semaine</td><td class="price">${formatPrice(data.price_1week)} GNF</td></tr>
+        <tr><td>2 semaines</td><td class="price">${formatPrice(data.price_2weeks)} GNF</td></tr>
+        <tr><td>1 mois — 15 séances (forfait)</td><td class="price">${formatPrice(data.price_1month_15)} GNF</td></tr>
+        <tr><td>1 mois — accès quotidien (tous les jours)</td><td class="price">${formatPrice(data.price_1month_daily)} GNF</td></tr>
+        <tr><td>Journalier (session unique)</td><td class="price">${formatPrice(data.price_daily)} GNF</td></tr>
+        <tr><td>Annuel (forfait)</td><td class="price">${formatPrice(data.price_annual)} GNF</td></tr>
+      `;
+      
+      document.getElementById('pricingRemarks').textContent = data.pricing_remarks;
+      
+      // Conditions
+      document.getElementById('conditionsList').innerHTML = `
+        <li><strong>Horaires :</strong> Lundi — Vendredi : ${data.hours_weekday}; Samedi : ${data.hours_saturday}; Dimanche : ${data.hours_sunday}.</li>
+        <li><strong>Inscription :</strong> ${data.condition_inscription}</li>
+        <li><strong>Tenue :</strong> ${data.condition_tenue}</li>
+        <li><strong>Hygiène :</strong> ${data.condition_hygiene}</li>
+      `;
+      
+      // Services
+      document.getElementById('servicesList').innerHTML = `
+        <span class="chip">${data.service1}</span>
+        <span class="chip">${data.service2}</span>
+        <span class="chip">${data.service3}</span>
+        <span class="chip">${data.service4}</span>
+      `;
+      
+      // Contact
+      const phone = data.phone;
+      const whatsappMsg = encodeURIComponent(data.whatsapp_msg);
+      
+      document.getElementById('phoneText').innerHTML = Appeler <span style="font-size:13px; opacity:0.9;">${phone}</span>;
+      document.getElementById('phoneBtn').href = tel:${phone};
+      document.getElementById('whatsappBtn').href = https://wa.me/${phone.replace(/[^0-9]/g,'')}?text=${whatsappMsg};
+      document.getElementById('emailBtn').href = mailto:${data.email}?subject=Contact%20NASSFIT;
+      
+      document.getElementById('addressText').textContent = data.address;
+      document.getElementById('mapsLink').href = data.maps_link;
+      
+      // Background
+      const contactEl = document.getElementById('contactSection');
+      if (data.contact_bg_image) {
+        contactEl.style.backgroundImage = url(${data.contact_bg_image});
+        contactEl.style.backgroundSize = 'cover';
+        contactEl.style.backgroundPosition = 'center';
+      }
+      
+      // QR Code
+      buildQRCode(data.qr_url);
+      
+      // Footer
+      document.getElementById('footerText').textContent = data.footer_text;
+    }
+    
+    // Load admin form data
+    function loadAdminData() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      
+      const data = JSON.parse(saved);
+      
+      document.getElementById('admin_username').value = data.admin_username || 'admin';
+      document.getElementById('clubName_admin').value = data.clubName || 'NASSFIT';
+      document.getElementById('clubSubtitle_admin').value = data.clubSubtitle || 'Club sportif — entraînements & coaching';
+      document.getElementById('logoUrl_admin').value = data.logoUrl || '';
+      
+      document.getElementById('price_inscription').value = data.price_inscription || 80000;
+      document.getElementById('price_1week').value = data.price_1week || 125000;
+      document.getElementById('price_2weeks').value = data.price_2weeks || 250000;
+      document.getElementById('price_1month_15').value = data.price_1month_15 || 300000;
+      document.getElementById('price_1month_daily').value = data.price_1month_daily || 500000;
+      document.getElementById('price_daily').value = data.price_daily || 50000;
+      document.getElementById('price_annual').value = data.price_annual || 6000000;
+      document.getElementById('pricing_remarks').value = data.pricing_remarks || '';
+      
+      document.getElementById('hours_weekday').value = data.hours_weekday || '07h à 22h';
+      document.getElementById('hours_saturday').value = data.hours_saturday || '09h à 22h';
+      document.getElementById('hours_sunday').value = data.hours_sunday || '09h à 15h';
+      
+      document.getElementById('condition_inscription').value = data.condition_inscription || '';
+      document.getElementById('condition_tenue').value = data.condition_tenue || '';
+      document.getElementById('condition_hygiene').value = data.condition_hygiene || '';
+      
+      document.getElementById('service1').value = data.service1 || 'Coaching';
+      document.getElementById('service2').value = data.service2 || 'Accès équipements';
+      document.getElementById('service3').value = data.service3 || 'Suivi mensuel';
+      document.getElementById('service4').value = data.service4 || 'Programme personnalisé';
+      
+      document.getElementById('phone').value = data.phone || '+224627436896';
+      document.getElementById('email').value = data.email || 'nassfit224@gmail.com';
+      document.getElementById('whatsapp_msg').value = data.whatsapp_msg || '';
+      document.getElementById('address').value = data.address || 'Lambayi, Conakry';
+      document.getElementById('maps_link').value = data.maps_link || '';
+      document.getElementById('contact_bg_image').value = data.contact_bg_image || '';
+      
+      document.getElementById('qr_url').value = data.qr_url || '';
+      document.getElementById('footer_text').value = data.footer_text || '© NASSFIT';
+    }
+    
+    // Save admin data
+    function saveData(e) {
+      e.preventDefault();
+      
+      const data = {
+        admin_username: document.getElementById('admin_username').value,
+        clubName: document.getElementById('clubName_admin').value,
+        clubSubtitle: document.getElementById('clubSubtitle_admin').value,
+        logoUrl: document.getElementById('logoUrl_admin').value,
+        
+        price_inscription: parseInt(document.getElementById('price_inscription').value),
+        price_1week: parseInt(document.getElementById('price_1week').value),
+        price_2weeks: parseInt(document.getElementById('price_2weeks').value),
+        price_1month_15: parseInt(document.getElementById('price_1month_15').value),
+        price_1month_daily: parseInt(document.getElementById('price_1month_daily').value),
+        price_daily: parseInt(document.getElementById('price_daily').value),
+        price_annual: parseInt(document.getElementById('price_annual').value),
+        pricing_remarks: document.getElementById('pricing_remarks').value,
+        
+        hours_weekday: document.getElementById('hours_weekday').value,
+        hours_saturday: document.getElementById('hours_saturday').value,
+        hours_sunday: document.getElementById('hours_sunday').value,
+        
+        condition_inscription: document.getElementById('condition_inscription').value,
+        condition_tenue: document.getElementById('condition_tenue').value,
+        condition_hygiene: document.getElementById('condition_hygiene').value,
+        
+        service1: document.getElementById('service1').value,
+        service2: document.getElementById('service2').value,
+        service3: document.getElementById('service3').value,
+        service4: document.getElementById('service4').value,
+        
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        whatsapp_msg: document.getElementById('whatsapp_msg').value,
+        address: document.getElementById('address').value,
+        maps_link: document.getElementById('maps_link').value,
+        contact_bg_image: document.getElementById('contact_bg_image').value,
+        
+        qr_url: document.getElementById('qr_url').value,
+        footer_text: document.getElementById('footer_text').value
+      };
+      
+      // Handle password change
+      const newPassword = document.getElementById('admin_password').value;
+      if (newPassword) {
+        if (newPassword.length < 6) {
+          alert('❌ Le mot de passe doit contenir au moins 6 caractères');
+          return;
+        }
+        data.admin_password_hash = newPassword;
+        alert('⚠ Mot de passe changé avec succès !\n\nNouveau mot de passe : ' + newPassword + '\n\nNotez-le bien !');
+      } else {
+        // Keep existing password
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const oldData = JSON.parse(saved);
+          if (oldData.admin_password_hash) {
+            data.admin_password_hash = oldData.admin_password_hash;
+          }
+        }
+      }
+      
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      
+      // Show success message
+      const msg = document.getElementById('successMsg');
+      msg.classList.add('show');
+      setTimeout(() => msg.classList.remove('show'), 3000);
+      
+      // Clear password field
+      document.getElementById('admin_password').value = '';
+      
+      // Reload site data
+      loadSiteData();
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    function formatPrice(price) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+    
+    function buildQRCode(url) {
+      const container = document.getElementById('qrcode');
+      container.innerHTML = '';
+      new QRCode(container, {
+        text: url,
+        width: 192,
+        height: 192,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+      document.getElementById('qrTarget').textContent = url;
+    }
+    
+    function getDefaultData() {
+      return {
+        clubName: 'NASSFIT',
+        clubSubtitle: 'Club sportif — entraînements & coaching',
+        logoUrl: '',
+        price_inscription: 80000,
+        price_1week: 125000,
+        price_2weeks: 250000,
+        price_1month_15: 300000,
+        price_1month_daily: 500000,
+        price_daily: 50000,
+        price_annual: 6000000,
+        pricing_remarks: 'Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l\'inscription.',
+        hours_weekday: '07h à 22h',
+        hours_saturday: '09h à 22h',
+        hours_sunday: '09h à 15h',
+        condition_inscription: 'Présenter une pièce d\'identité et régler les frais d\'inscription (80 000 GNF).',
+        condition_tenue: 'Tenue de sport exigée — chaussures propres à porter uniquement dans la salle.',
+        condition_hygiene: 'Serviette Obligatoire',
+        service1: 'Coaching',
+        service2: 'Accès équipements',
+        service3: 'Suivi mensuel',
+        service4: 'Programme personnalisé',
+        phone: '+224627436896',
+        email: 'nassfit224@gmail.com',
+        whatsapp_msg: 'Bonjour NASSFIT — J\'ai une question sur les tarifs',
+        address: 'Lambayi, Conakry',
+        maps_link: 'https://maps.app.goo.gl/K2kkYigAmH5RQqWT6',
+        contact_bg_image: '',
+        qr_url: 'https://nassfit-demo.netlify.app',
+        footer_text: '© NASSFIT'
+      };
+    }
+  </script>
+</body>
+</html>
