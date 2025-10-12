@@ -446,7 +446,7 @@
   <div id="adminPanel" class="hidden">
     <div class="admin-container">
       <div class="admin-header">
-        <h1>⚙ Administration NASSFIT</h1>
+        <h1>⚙️ Administration NASSFIT</h1>
         <button class="btn-logout" onclick="handleLogout()">🚪 Déconnexion</button>
       </div>
       
@@ -633,7 +633,7 @@
             <h3>🔖 Pied de Page</h3>
             <div class="form-group">
               <label>Texte du footer</label>
-              <input type="text" id="footer_text" value="© NASSFIT" required>
+              <input type="text" id="footer_text" value="©️ NASSFIT" required>
             </div>
           </div>
           
@@ -743,7 +743,7 @@
       // Logo
       const logoEl = document.getElementById('logo');
       if (data.logoUrl) {
-        logoEl.innerHTML = <img src="${data.logoUrl}" alt="Logo">;
+        logoEl.innerHTML = `<img src="${data.logoUrl}" alt="Logo">`;
       } else {
         logoEl.textContent = 'LOGO';
       }
@@ -785,10 +785,10 @@
       const phone = data.phone;
       const whatsappMsg = encodeURIComponent(data.whatsapp_msg);
       
-      document.getElementById('phoneText').innerHTML = Appeler <span style="font-size:13px; opacity:0.9;">${phone}</span>;
-      document.getElementById('phoneBtn').href = tel:${phone};
-      document.getElementById('whatsappBtn').href = https://wa.me/${phone.replace(/[^0-9]/g,'')}?text=${whatsappMsg};
-      document.getElementById('emailBtn').href = mailto:${data.email}?subject=Contact%20NASSFIT;
+      document.getElementById('phoneText').innerHTML = `Appeler <span style="font-size:13px; opacity:0.9;">${phone}</span>`;
+      document.getElementById('phoneBtn').href = `tel:${phone}`;
+      document.getElementById('whatsappBtn').href = `https://wa.me/${phone.replace(/[^0-9]/g,'')}?text=${whatsappMsg}`;
+      document.getElementById('emailBtn').href = `mailto:${data.email}?subject=Contact%20NASSFIT`;
       
       document.getElementById('addressText').textContent = data.address;
       document.getElementById('mapsLink').href = data.maps_link;
@@ -796,7 +796,7 @@
       // Background
       const contactEl = document.getElementById('contactSection');
       if (data.contact_bg_image) {
-        contactEl.style.backgroundImage = url(${data.contact_bg_image});
+        contactEl.style.backgroundImage = `url(${data.contact_bg_image})`;
         contactEl.style.backgroundSize = 'cover';
         contactEl.style.backgroundPosition = 'center';
       }
@@ -850,10 +850,10 @@
       document.getElementById('contact_bg_image').value = data.contact_bg_image || '';
       
       document.getElementById('qr_url').value = data.qr_url || '';
-      document.getElementById('footer_text').value = data.footer_text || '© NASSFIT';
+      document.getElementById('footer_text').value = data.footer_text || '©️ NASSFIT';
     }
     
-    // Save admin form data
+    // Save admin data
     function saveData(e) {
       e.preventDefault();
       
@@ -904,7 +904,7 @@
           return;
         }
         data.admin_password_hash = newPassword;
-        alert('⚠ Mot de passe changé avec succès !\n\nNouveau mot de passe : ' + newPassword + '\n\nNotez-le bien !');
+        alert('⚠️ Mot de passe changé avec succès !\n\nNouveau mot de passe : ' + newPassword + '\n\nNotez-le bien !');
       } else {
         // Keep existing password
         const saved = localStorage.getItem(STORAGE_KEY);
@@ -981,7 +981,7 @@
         maps_link: 'https://maps.app.goo.gl/K2kkYigAmH5RQqWT6',
         contact_bg_image: '',
         qr_url: 'https://nassfit-demo.netlify.app',
-        footer_text: '© NASSFIT'
+        footer_text: '©️ NASSFIT'
       };
     }
   </script>
