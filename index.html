@@ -396,33 +396,41 @@
 
         <div>
           <h1 id="clubName">NASSFIT</h1>
-          <p id="clubSubtitle">Club sportif — entraînements & coaching</p>
+          <p id="clubSubtitle"  data-i18n="club_subtitle">Club sportif — entraînements & coaching</p>
         </div>
 
         <div class="lang-switch">
-          <img src="https://flagcdn.com/w20/fr.png" alt="Français" onclick="setLanguage('fr')">
-          <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="setLanguage('en')">
+          <img src="https://flagcdn.com/h20/fr.png"
+              srcset="https://flagcdn.com/h40/fr.png 2x, https://flagcdn.com/h60/fr.png 3x"
+              height="20"
+              alt="France"
+              onclick="setLanguage('fr')">
+          <img src="https://flagcdn.com/h20/us.png"
+              srcset="https://flagcdn.com/h40/us.png 2x, https://flagcdn.com/h60/us.png 3x"
+              width="20"
+              alt="États-Unis" 
+              onclick="setLanguage('en')">
         </div>
 
       </header>
 
       <div class="grid">
         <section class="card" id="pricing">
-          <h2 style="margin:0 0 6px 0;">Tarifs d'abonnement</h2>
-          <p class="small" style="margin:0 0 12px 0;">Tarifs exprimés en GNF.</p>
+          <h2 style="margin:0 0 6px 0;" data-i18n="pricing_title">Tarifs d'abonnement</h2>
+          <p class="small" style="margin:0 0 12px 0;" data-i18n="pricing_note">Tarifs exprimés en GNF.</p>
 
           <table>
             <thead>
               <tr>
-                <th>Formule</th>
-                <th style="text-align:right">Prix</th>
+                <th data-i18n="pricing_column_plan">Formule</th>
+                <th style="text-align:right" data-i18n="pricing_column_price">Prix</th>
               </tr>
             </thead>
             <tbody id="pricingTable"></tbody>
           </table>
 
           <div style="margin-top:12px;">
-            <strong>Remarques :</strong>
+            <strong data-i18n="pricing_remarks_title">Remarques :</strong>
             <ul>
               <li id="pricingRemarks"></li>
             </ul>
@@ -431,34 +439,34 @@
           <hr style="margin:14px 0; border:none; border-top:1px dashed rgba(0,0,0,0.06)" />
 
           <div class="conditions">
-            <h3 style="margin:0 0 8px 0;">Conditions / Informations générales</h3>
+            <h3 style="margin:0 0 8px 0;" data-i18n="conditions_title">Conditions / Informations générales</h3>
             <ul id="conditionsList"></ul>
           </div>
 
           <div style="margin-top:12px;">
-            <strong>Services inclus :</strong>
+            <strong data-i18n="services_included_title">Services inclus :</strong>
             <div class="features" id="servicesList"></div>
           </div>
         </section>
 
         <aside class="card sidebar contact-bg" id="contactSection">
           <div>
-            <h3 style="margin:0 0 8px 0;">Contact</h3>
-            <p class="small" style="margin:0;" >Appelez, écrivez via WhatsApp ou contactez-nous par Mail</p>
+            <h3 style="margin:0 0 8px 0;" data-i18n="contact_title">Contact</h3>
+            <p class="small" style="margin:0; color:white;" data-i18n="contact_text">Appelez, écrivez via WhatsApp ou contactez-nous par Mail</p>
             <div class="contact-actions">
 
               <a class="btn btn-call" id="phoneBtn" href="tel:+224627436896">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12.9.36 1.77.7 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.49a2 2 0 0 1 2.11-.45c.83.34 1.7.58 2.6.7A2 2 0 0 1 22 16.92z"/>
                 </svg>
-                <span id="phoneText">Appeler</span>
+                <span id="phoneText" data-i18n="contact_call">Appeler</span>
               </a>
 
               <a class="btn btn-whatsapp" id="whatsappBtn" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M21.7 17.3a10 10 0 1 0-2.4 2.4l1.9 1.9 2.5-0.7-1.9-1.9zM17 14.1c-0.3-0.2-1.7-0.9-1.9-1-0.2-0.1-0.4-0.2-0.6 0-0.2 0.2-0.7 0.9-0.9 1.1-0.2 0.2-0.4 0.2-0.7 0.1-0.6-0.2-1.3-0.8-2.1-1.6-0.8-0.8-1.4-1.5-1.6-2.1-0.1-0.3 0-0.5 0.1-0.7 0.2-0.2.9-0.7 1.1-0.9 0.1-0.2 0.1-0.5 0-0.7-0.1-0.2-0.8-1.6-1-1.9-0.2-0.3-0.6-0.3-0.8-0.3-0.2 0-0.5 0-0.8 0-0.3 0-0.7 0.1-1 0.5-0.3 0.4-1.1 1.1-1.1 2.6s1.1 3 1.2 3.2c0.2 0.3 2.1 3.3 5 4.5 2.9 1.2 2.9 0.8 3.4 0.8 0.5 0 1.6-0.6 1.8-1.2 0.2-0.6 0.2-1.2 0.1-1.3-0.1-0.1-0.3-0.2-0.6-0.4z"/>
                 </svg>
-                <span>WhatsApp</span>
+                <span data-i18n="contact_whatsapp">WhatsApp</span>
               </a>
 
               <a class="btn btn-email" id="emailBtn">
@@ -467,7 +475,7 @@
                   <path d="M22 6v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/>
                   <path d="M22 6l-10 7L2 6" />
                 </svg>
-                <span>Email</span>
+                <span data-i18n="contact_email">Email</span>
               </a>
 
             </div>
@@ -483,9 +491,9 @@
 
           <div>
             <p class="small">
-              <strong>Adresse :</strong> <span id="addressText"></span><br />
+              <strong data-i18n="address_label" style="color:white;">Adresse :</strong> <span id="addressText"></span><br />
               <a id="mapsLink" href="#" target="_blank" rel="noopener noreferrer" 
-                 style="color:var(--dark); font-weight:700; text-decoration:none;">
+                style="color:var(--dark); font-weight:700; text-decoration:none;" data-i18n="address_link">
                 Voir La Localisation →
               </a>
             </p>
@@ -617,14 +625,14 @@
               </tbody>
             </table>
             <div class="form-group" style="margin-top:20px;">
-              <label>Remarques sur les tarifs</label>
+              <label>Remarques </label>
               <textarea id="pricing_remarks">Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l'inscription.</textarea>
             </div>
           </div>
           
           <!-- Horaires -->
           <div class="form-section">
-            <h3>🕐 Horaires</h3>
+            <h3 >🕐 Horaires</h3>
             <div class="form-group">
               <label>Lundi — Vendredi</label>
               <input type="text" id="hours_weekday" value="07h à 22h" required>
@@ -661,19 +669,19 @@
             <h3>✨ Services Inclus</h3>
             <div class="form-group">
               <label>Service 1</label>
-              <input type="text" id="service1" value="Coaching" required>
+              <input type="text" id="service1" data-i18n="service1" value="Coaching" required>
             </div>
             <div class="form-group">
               <label>Service 2</label>
-              <input type="text" id="service2" value="Accès équipements" required>
+              <input type="text" id="service2" data-i18n="service2" value="Accès équipements" required>
             </div>
             <div class="form-group">
               <label>Service 3</label>
-              <input type="text" id="service3" value="Suivi mensuel" required>
+              <input type="text" id="service3" data-i18n="service3" value="Suivi mensuel" required>
             </div>
             <div class="form-group">
               <label>Service 4</label>
-              <input type="text" id="service4" value="Programme personnalisé" required>
+              <input type="text" id="service4"  data-i18n="service4" value="Programme personnalisé" required>
             </div>
           </div>
           
@@ -694,7 +702,7 @@
             </div>
             <div class="form-group">
               <label>Adresse physique</label>
-              <input type="text" id="address" value="Lambayi, Conakry" required>
+              <input type="text" id="address" value="Lambanyi, Conakry" required>
             </div>
             <div class="form-group">
               <label>Lien Google Maps</label>
@@ -752,22 +760,40 @@
         pricing_remarks_title: "Remarques :",
         pricing_remarks_text: "Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l'inscription.",
         conditions_title: "Conditions / Informations générales",
-        conditions_hours: "Horaires : Lundi — Vendredi : 07h à 22h; Samedi : 09h à 22h; Dimanche : 09h à 15h.",
-        conditions_inscription: "Inscription : Présenter une pièce d'identité et régler les frais d'inscription (80 000 GNF).",
-        conditions_outfit: "Tenue : Tenue de sport exigée — chaussures propres à porter uniquement dans la salle.",
-        conditions_hygiene: "Hygiène : Serviette Obligatoire",
         services_included_title: "Services inclus :",
-        services_included_list: "Coaching  Accès équipements  Suivi mensuel  Programme personnalisé",
+
         contact_title: "Contact",
         contact_text: "Appelez, écrivez via WhatsApp ou contactez-nous par Mail",
         contact_call: "Appeler",
         contact_whatsapp: "WhatsApp",
-        contact_email: "Email"
+        contact_email: "Email",
+        address_label: "Adresse :",
+        address_link: "Voir la localisation →",
+
+        hours_label: "Horaires :",
+        registration_label: "Inscription :",
+        dress_label: "Tenue :",
+        hygiene_label: "Hygiène :",
+
+        pricing_remarks_text: "Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l'inscription.",
+        condition_inscription_text: "Présenter une pièce d'identité et régler les frais d'inscription (80 000 GNF).",
+        condition_tenue_text: "Tenue de sport exigée — chaussures propres à porter uniquement dans la salle.",
+        condition_hygiene_text: "Serviette Obligatoire",
+        service1_text: "Coaching",
+        service2_text: "Accès équipements",
+        service3_text: "Suivi mensuel",
+        service4_text: "Programme personnalisé",
+        hours_weekday_label: "Lundi — Vendredi :",
+        hours_saturday_label: "Samedi :",
+        hours_sunday_label: "Dimanche :"
+
+
+
       },
       en: {
         club_subtitle: "Sports club — training & coaching",
         pricing_title: "Subscription Rates",
-        pricing_note: "Prices expressed in GNF.",
+        pricing_note: "Prices expressed in GNF.", 
         pricing_column_plan: "Plan",
         pricing_column_price: "Price",
         pricing_inscription: "Registration (one-time fee)",
@@ -780,17 +806,33 @@
         pricing_remarks_title: "Remarks:",
         pricing_remarks_text: "The above rates are indicative — final rates confirmed upon registration.",
         conditions_title: "Conditions / General Information",
-        conditions_hours: "Opening hours: Monday — Friday: 7 a.m. to 10 p.m.; Saturday: 9 a.m. to 10 p.m.; Sunday: 9 a.m. to 3 p.m.",
-        conditions_inscription: "Registration: Present an ID and pay the registration fee (80,000 GNF).",
-        conditions_outfit: "Outfit: Sportswear required — clean shoes reserved for indoor use.",
-        conditions_hygiene: "Hygiene: Towel required",
         services_included_title: "Included services:",
-        services_included_list: "Coaching  Equipment access  Monthly follow-up  Personalized program",
+
         contact_title: "Contact",
         contact_text: "Call, write via WhatsApp or contact us by email",
         contact_call: "Call",
         contact_whatsapp: "WhatsApp",
-        contact_email: "Email"
+        contact_email: "Email",
+        address_label: "Address:",
+        address_link: "View location →",
+
+        hours_label: "Hours:",
+        registration_label: "Registration:",
+        dress_label: "Dress code:",
+        hygiene_label: "Hygiene:",
+
+        pricing_remarks_text: "The above rates are indicative — final rates confirmed upon registration.",
+        condition_inscription_text: "Present an ID and pay the registration fee (80,000 GNF).",
+        condition_tenue_text: "Sportswear required — clean shoes only inside the gym.",
+        condition_hygiene_text: "Towel required",
+        service1_text: "Coaching",
+        service2_text: "Equipment access",
+        service3_text: "Monthly monitoring",
+        service4_text: "Personalized program",
+        hours_weekday_label: "Monday — Friday:",
+        hours_saturday_label: "Saturday:",
+        hours_sunday_label: "Sunday:"
+
       }
     };
 
@@ -798,15 +840,66 @@
     function applyTranslation(lang) {
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
-        el.textContent = translations[lang][key] || el.textContent;
+        const translation = translations[lang][key];
+
+        if (!translation) return; // Si pas de traduction, on laisse tel quel
+
+        // Si c’est un input, textarea ou bouton
+        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.tagName === "BUTTON") {
+          if (el.hasAttribute("placeholder")) {
+            el.placeholder = translation;
+          } else if (el.type === "submit" || el.type === "button") {
+            el.value = translation;
+          } else {
+            // Si tu veux traduire une étiquette ou un champ spécifique
+            el.setAttribute("data-label", translation);
+          }
+        } 
+        // Sinon, texte normal
+        else {
+          el.textContent = translation;
+        }
       });
+
       localStorage.setItem("language", lang);
     }
 
+
     // Fonction appelée au clic sur un drapeau
     function setLanguage(lang) {
-      applyTranslation(lang);
-    }
+  // 1️⃣ Appliquer les traductions data-i18n
+  applyTranslation(lang);
+
+  // 2️⃣ Récupérer les données actuelles
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (!saved) return;
+  const data = JSON.parse(saved);
+
+  // 3️⃣ Appliquer les textes traduits dans les zones publiques
+  const t = translations[lang];
+
+  // Tarifs (remarque)
+  document.getElementById('pricingRemarks').textContent = t.pricing_remarks_text;
+
+  // Conditions
+  document.getElementById('conditionsList').innerHTML = `
+    <li><strong>${t.hours_label}</strong> ${t.hours_weekday_label || 'Lundi — Vendredi'} : ${data.hours_weekday}; ${t.hours_saturday_label || 'Samedi'} : ${data.hours_saturday}; ${t.hours_sunday_label || 'Dimanche'} : ${data.hours_sunday}.</li>
+    <li><strong>${lang === 'fr' ? 'Inscription :' : 'Registration:'}</strong> ${t.condition_inscription_text}</li>
+    <li><strong>${lang === 'fr' ? 'Tenue :' : 'Dress code:'}</strong> ${t.condition_tenue_text}</li>
+    <li><strong>${lang === 'fr' ? 'Hygiène :' : 'Hygiene:'}</strong> ${t.condition_hygiene_text}</li>
+  `;
+
+  // Services
+  document.getElementById('servicesList').innerHTML = `
+    <span class="chip">${t.service1_text}</span>
+    <span class="chip">${t.service2_text}</span>
+    <span class="chip">${t.service3_text}</span>
+    <span class="chip">${t.service4_text}</span>
+  `;
+
+  // Sauvegarder la langue actuelle
+  localStorage.setItem("language", lang);
+}
 
     // Charger la langue sauvegardée
     const savedLang = localStorage.getItem("language") || "fr";
@@ -924,23 +1017,23 @@
       
       // Pricing
       document.getElementById('pricingTable').innerHTML = `
-        <tr><td>Inscription (frais unique)</td><td class="price">${formatPrice(data.price_inscription)} GNF</td></tr>
-        <tr><td>1 semaine</td><td class="price">${formatPrice(data.price_1week)} GNF</td></tr>
-        <tr><td>2 semaines</td><td class="price">${formatPrice(data.price_2weeks)} GNF</td></tr>
-        <tr><td>1 mois — 15 séances (forfait)</td><td class="price">${formatPrice(data.price_1month_15)} GNF</td></tr>
-        <tr><td>1 mois — accès quotidien (tous les jours)</td><td class="price">${formatPrice(data.price_1month_daily)} GNF</td></tr>
-        <tr><td>Journalier (session unique)</td><td class="price">${formatPrice(data.price_daily)} GNF</td></tr>
-        <tr><td>Annuel (forfait)</td><td class="price">${formatPrice(data.price_annual)} GNF</td></tr>
+        <tr><td data-i18n="pricing_inscription">Inscription (frais unique)</td><td class="price">${formatPrice(data.price_inscription)} GNF</td></tr>
+        <tr><td data-i18n="pricing_week1">1 semaine</td><td class="price">${formatPrice(data.price_1week)} GNF</td></tr>
+        <tr><td data-i18n="pricing_week2">2 semaines</td><td class="price">${formatPrice(data.price_2weeks)} GNF</td></tr>
+        <tr><td data-i18n="pricing_month15">1 mois — 15 séances (forfait)</td><td class="price">${formatPrice(data.price_1month_15)} GNF</td></tr>
+        <tr><td data-i18n="pricing_month_daily">1 mois — accès quotidien (tous les jours)</td><td class="price">${formatPrice(data.price_1month_daily)} GNF</td></tr>
+        <tr><td data-i18n="pricing_daily">Journalier (session unique)</td><td class="price">${formatPrice(data.price_daily)} GNF</td></tr>
+        <tr><td data-i18n="pricing_annual">Annuel (forfait)</td><td class="price">${formatPrice(data.price_annual)} GNF</td></tr>
       `;
       
       document.getElementById('pricingRemarks').textContent = data.pricing_remarks;
       
       // Conditions
       document.getElementById('conditionsList').innerHTML = `
-        <li><strong>Horaires :</strong> Lundi — Vendredi : ${data.hours_weekday}; Samedi : ${data.hours_saturday}; Dimanche : ${data.hours_sunday}.</li>
-        <li><strong>Inscription :</strong> ${data.condition_inscription}</li>
-        <li><strong>Tenue :</strong> ${data.condition_tenue}</li>
-        <li><strong>Hygiène :</strong> ${data.condition_hygiene}</li>
+        <li><strong data-i18n="hours_label">Horaires :</strong> Lundi — Vendredi : ${data.hours_weekday}; Samedi : ${data.hours_saturday}; Dimanche : ${data.hours_sunday}.</li>
+        <li><strong data-i18n="registration_label">Inscription :</strong> ${data.condition_inscription}</li>
+        <li><strong data-i18n="dress_label">Tenue :</strong> ${data.condition_tenue}</li>
+        <li><strong data-i18n="hygiene_label">Hygiène :</strong> ${data.condition_hygiene}</li>
       `;
       
       // Services
@@ -1015,7 +1108,7 @@
       document.getElementById('phone').value = data.phone || '+224627436896';
       document.getElementById('email').value = data.email || 'nassfit224@gmail.com';
       document.getElementById('whatsapp_msg').value = data.whatsapp_msg || '';
-      document.getElementById('address').value = data.address || 'Lambayi, Conakry';
+      document.getElementById('address').value = data.address || 'Lambanyi, Conakry';
       document.getElementById('maps_link').value = data.maps_link || '';
       document.getElementById('contact_bg_image').value = data.contact_bg_image || '';
       
@@ -1137,6 +1230,7 @@
         hours_weekday: '07h à 22h',
         hours_saturday: '09h à 22h',
         hours_sunday: '09h à 15h',
+
         condition_inscription: 'Présenter une pièce d\'identité et régler les frais d\'inscription (80 000 GNF).',
         condition_tenue: 'Tenue de sport exigée — chaussures propres à porter uniquement dans la salle.',
         condition_hygiene: 'Serviette Obligatoire',
@@ -1144,10 +1238,11 @@
         service2: 'Accès équipements',
         service3: 'Suivi mensuel',
         service4: 'Programme personnalisé',
+        
         phone: '+224627436896',
         email: 'nassfit224@gmail.com',
         whatsapp_msg: 'Bonjour NASSFIT — J\'ai une question sur les tarifs',
-        address: 'Lambayi, Conakry',
+        address: 'Lambanyi, Conakry',
         maps_link: 'https://maps.app.goo.gl/K2kkYigAmH5RQqWT6',
         contact_bg_image: '',
         qr_url: 'https://nassfit-demo.netlify.app',
