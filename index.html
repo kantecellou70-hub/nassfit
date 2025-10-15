@@ -43,6 +43,27 @@
       box-shadow:0 6px 18px rgba(0,0,0,0.08);
     }
 
+    .lang-switch {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .lang-switch img {
+      width: 40px;
+      height: 33px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    .lang-switch img:hover {
+      border-color: white;
+      transform: scale(1.1);
+    }
+
+
     .logo{
       width:64px;
       height:64px;
@@ -377,6 +398,12 @@
           <h1 id="clubName">NASSFIT</h1>
           <p id="clubSubtitle">Club sportif — entraînements & coaching</p>
         </div>
+
+        <div class="lang-switch">
+          <img src="https://flagcdn.com/w20/fr.png" alt="Français" onclick="setLanguage('fr')">
+          <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="setLanguage('en')">
+        </div>
+
       </header>
 
       <div class="grid">
@@ -705,6 +732,88 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  
+  <script>
+   // === Gestion de la traduction ===
+    const translations = {
+      fr: {
+        club_subtitle: "Club sportif — entraînements & coaching",
+        pricing_title: "Tarifs d'abonnement",
+        pricing_note: "Tarifs exprimés en GNF.",
+        pricing_column_plan: "Formule",
+        pricing_column_price: "Prix",
+        pricing_inscription: "Inscription (frais unique)",
+        pricing_week1: "1 semaine",
+        pricing_week2: "2 semaines",
+        pricing_month15: "1 mois — 15 séances (forfait)",
+        pricing_month_daily: "1 mois — accès quotidien (tous les jours)",
+        pricing_daily: "Journalier (session unique)",
+        pricing_annual: "Annuel (forfait)",
+        pricing_remarks_title: "Remarques :",
+        pricing_remarks_text: "Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l'inscription.",
+        conditions_title: "Conditions / Informations générales",
+        conditions_hours: "Horaires : Lundi — Vendredi : 07h à 22h; Samedi : 09h à 22h; Dimanche : 09h à 15h.",
+        conditions_inscription: "Inscription : Présenter une pièce d'identité et régler les frais d'inscription (80 000 GNF).",
+        conditions_outfit: "Tenue : Tenue de sport exigée — chaussures propres à porter uniquement dans la salle.",
+        conditions_hygiene: "Hygiène : Serviette Obligatoire",
+        services_included_title: "Services inclus :",
+        services_included_list: "Coaching  Accès équipements  Suivi mensuel  Programme personnalisé",
+        contact_title: "Contact",
+        contact_text: "Appelez, écrivez via WhatsApp ou contactez-nous par Mail",
+        contact_call: "Appeler",
+        contact_whatsapp: "WhatsApp",
+        contact_email: "Email"
+      },
+      en: {
+        club_subtitle: "Sports club — training & coaching",
+        pricing_title: "Subscription Rates",
+        pricing_note: "Prices expressed in GNF.",
+        pricing_column_plan: "Plan",
+        pricing_column_price: "Price",
+        pricing_inscription: "Registration (one-time fee)",
+        pricing_week1: "1 week",
+        pricing_week2: "2 weeks",
+        pricing_month15: "1 month — 15 sessions (package)",
+        pricing_month_daily: "1 month — daily access (every day)",
+        pricing_daily: "Daily (single session)",
+        pricing_annual: "Annual (package)",
+        pricing_remarks_title: "Remarks:",
+        pricing_remarks_text: "The above rates are indicative — final rates confirmed upon registration.",
+        conditions_title: "Conditions / General Information",
+        conditions_hours: "Opening hours: Monday — Friday: 7 a.m. to 10 p.m.; Saturday: 9 a.m. to 10 p.m.; Sunday: 9 a.m. to 3 p.m.",
+        conditions_inscription: "Registration: Present an ID and pay the registration fee (80,000 GNF).",
+        conditions_outfit: "Outfit: Sportswear required — clean shoes reserved for indoor use.",
+        conditions_hygiene: "Hygiene: Towel required",
+        services_included_title: "Included services:",
+        services_included_list: "Coaching  Equipment access  Monthly follow-up  Personalized program",
+        contact_title: "Contact",
+        contact_text: "Call, write via WhatsApp or contact us by email",
+        contact_call: "Call",
+        contact_whatsapp: "WhatsApp",
+        contact_email: "Email"
+      }
+    };
+
+    // Appliquer la traduction à tous les éléments avec data-i18n="clé"
+    function applyTranslation(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        el.textContent = translations[lang][key] || el.textContent;
+      });
+      localStorage.setItem("language", lang);
+    }
+
+    // Fonction appelée au clic sur un drapeau
+    function setLanguage(lang) {
+      applyTranslation(lang);
+    }
+
+    // Charger la langue sauvegardée
+    const savedLang = localStorage.getItem("language") || "fr";
+    applyTranslation(savedLang);
+
+  </script>
+  
   <script>
     const STORAGE_KEY = 'nassfit_data';
     const AUTH_KEY = 'nassfit_auth';
