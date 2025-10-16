@@ -739,7 +739,7 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
   
   <script>
    // === Gestion de la traduction ===
@@ -865,15 +865,20 @@
     }
 
 
-    // Fonction appelée au clic sur un drapeau
+  // Fonction appelée au clic sur un drapeau
     function setLanguage(lang) {
   // 1️⃣ Appliquer les traductions data-i18n
   applyTranslation(lang);
 
   // 2️⃣ Récupérer les données actuelles
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (!saved) return;
-  const data = JSON.parse(saved);
+    let saved = localStorage.getItem(STORAGE_KEY);
+    let data;
+    if (!saved) {
+      data = getDefaultData(); // 🔁 recharge les valeurs par défaut
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } else {
+      data = JSON.parse(saved);
+    }
 
   // 3️⃣ Appliquer les textes traduits dans les zones publiques
   const t = translations[lang];
