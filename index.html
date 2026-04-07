@@ -146,28 +146,11 @@
     .contact-actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;}
 
     .contact-bg {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-bg::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.3);
-      z-index: 0;
-    }
-    .contact-bg * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .contact-bg {
-      background-image: url('images/nassfitpic1.png');
+      background-image: url(‘images/nassfitpic1.png’);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      color: white; /* texte plus lisible sur fond image */
+      color: white;
       position: relative;
       overflow: hidden;
     }
@@ -176,7 +159,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      /*background: rgba(0,0,0,0.5);  assombrit l’image */
+      background: rgba(0,0,0,0.35);
       z-index: 0;
     }
 
@@ -384,6 +367,36 @@
       font-weight:600;
     }
     .success-message.show{display:block;}
+
+    /* ========== CHAMPS BILINGUES CMS ========== */
+    .bilingual-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 640px) {
+      .bilingual-group { grid-template-columns: 1fr; }
+    }
+    .lang-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .lang-label .flag { font-size: 18px; line-height: 1; }
+    .lang-col { display: flex; flex-direction: column; }
+    .lang-col input,
+    .lang-col textarea { margin-bottom: 0; }
+    .section-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin: -10px 0 16px 0;
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
@@ -396,7 +409,7 @@
 
         <div>
           <h1 id="clubName">NASSFIT</h1>
-          <p id="clubSubtitle"  data-i18n="club_subtitle">Club sportif — entraînements & coaching</p>
+          <p id="clubSubtitle">Club sportif — entraînements & coaching</p>
         </div>
 
         <div class="lang-switch">
@@ -530,10 +543,6 @@
           <button type="submit">Se connecter</button>
         </form>
         
-        <div class="password-hint">
-          💡 <strong>Identifiants par défaut :</strong><br>
-          admin / nassfit2025
-        </div>
       </div>
     </div>
   </div>
@@ -560,7 +569,7 @@
             </div>
             <div class="form-group">
               <label>Nouveau mot de passe</label>
-              <input type="password" id="admin_password" placeholder="Laissez vide pour ne pas changer">
+              <input type="password" id="admin_password" placeholder="Laissez vide pour ne pas changer" autocomplete="new-password">
               <small>Minimum 6 caractères</small>
             </div>
           </div>
@@ -572,9 +581,16 @@
               <label>Nom du club</label>
               <input type="text" id="clubName_admin" value="NASSFIT" required>
             </div>
-            <div class="form-group">
-              <label>Sous-titre</label>
-              <input type="text" id="clubSubtitle_admin" value="Club sportif — entraînements & coaching" required>
+            <p class="section-note">Les champs bilingues affichent la version FR ou EN selon la langue choisie par le visiteur.</p>
+            <div class="bilingual-group">
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇫🇷</span> Sous-titre (Français)</label>
+                <input type="text" id="clubSubtitle_admin" value="Club sportif — entraînements & coaching" required>
+              </div>
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇺🇸</span> Subtitle (English)</label>
+                <input type="text" id="clubSubtitle_en_admin" placeholder="Sports club — training & coaching">
+              </div>
             </div>
             <div class="form-group">
               <label>URL du logo (optionnel)</label>
@@ -624,9 +640,15 @@
                 </tr>
               </tbody>
             </table>
-            <div class="form-group" style="margin-top:20px;">
-              <label>Remarques </label>
-              <textarea id="pricing_remarks">Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l'inscription.</textarea>
+            <div class="bilingual-group" style="margin-top:20px;">
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇫🇷</span> Remarques (Français)</label>
+                <textarea id="pricing_remarks">Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l'inscription.</textarea>
+              </div>
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇺🇸</span> Remarks (English)</label>
+                <textarea id="pricing_remarks_en" placeholder="The above rates are indicative — final rates confirmed upon registration."></textarea>
+              </div>
             </div>
           </div>
           
@@ -650,38 +672,89 @@
           <!-- Conditions -->
           <div class="form-section">
             <h3>📝 Conditions & Informations</h3>
-            <div class="form-group">
-              <label>Inscription</label>
-              <textarea id="condition_inscription">Présenter une pièce d'identité et régler les frais d'inscription (80 000 GNF).</textarea>
+            <p class="section-note">Rédigez chaque condition dans les deux langues.</p>
+
+            <div class="bilingual-group">
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇫🇷</span> Inscription (FR)</label>
+                <textarea id="condition_inscription">Présenter une pièce d'identité et régler les frais d'inscription (80 000 GNF).</textarea>
+              </div>
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇺🇸</span> Registration (EN)</label>
+                <textarea id="condition_inscription_en" placeholder="Present an ID and pay the registration fee (80,000 GNF)."></textarea>
+              </div>
             </div>
-            <div class="form-group">
-              <label>Tenue</label>
-              <textarea id="condition_tenue">Tenue de sport exigée — chaussures propres à porter uniquement dans la salle.</textarea>
+
+            <div class="bilingual-group">
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇫🇷</span> Tenue (FR)</label>
+                <textarea id="condition_tenue">Tenue de sport exigée — chaussures propres à porter uniquement dans la salle.</textarea>
+              </div>
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇺🇸</span> Dress code (EN)</label>
+                <textarea id="condition_tenue_en" placeholder="Sportswear required — clean shoes only inside the gym."></textarea>
+              </div>
             </div>
-            <div class="form-group">
-              <label>Hygiène</label>
-              <input type="text" id="condition_hygiene" value="Serviette Obligatoire" required>
+
+            <div class="bilingual-group">
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇫🇷</span> Hygiène (FR)</label>
+                <input type="text" id="condition_hygiene" value="Serviette Obligatoire" required>
+              </div>
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇺🇸</span> Hygiene (EN)</label>
+                <input type="text" id="condition_hygiene_en" placeholder="Towel required">
+              </div>
             </div>
           </div>
           
           <!-- Services -->
           <div class="form-section">
             <h3>✨ Services Inclus</h3>
-            <div class="form-group">
-              <label>Service 1</label>
-              <input type="text" id="service1" data-i18n="service1" value="Coaching" required>
+            <p class="section-note">Les badges de services s'affichent dans la langue du visiteur.</p>
+
+            <div class="bilingual-group">
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇫🇷</span> Service 1 (FR)</label>
+                <input type="text" id="service1" value="Coaching" required>
+              </div>
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇺🇸</span> Service 1 (EN)</label>
+                <input type="text" id="service1_en" placeholder="Coaching">
+              </div>
             </div>
-            <div class="form-group">
-              <label>Service 2</label>
-              <input type="text" id="service2" data-i18n="service2" value="Accès équipements" required>
+
+            <div class="bilingual-group">
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇫🇷</span> Service 2 (FR)</label>
+                <input type="text" id="service2" value="Accès équipements" required>
+              </div>
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇺🇸</span> Service 2 (EN)</label>
+                <input type="text" id="service2_en" placeholder="Equipment access">
+              </div>
             </div>
-            <div class="form-group">
-              <label>Service 3</label>
-              <input type="text" id="service3" data-i18n="service3" value="Suivi mensuel" required>
+
+            <div class="bilingual-group">
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇫🇷</span> Service 3 (FR)</label>
+                <input type="text" id="service3" value="Suivi mensuel" required>
+              </div>
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇺🇸</span> Service 3 (EN)</label>
+                <input type="text" id="service3_en" placeholder="Monthly monitoring">
+              </div>
             </div>
-            <div class="form-group">
-              <label>Service 4</label>
-              <input type="text" id="service4"  data-i18n="service4" value="Programme personnalisé" required>
+
+            <div class="bilingual-group">
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇫🇷</span> Service 4 (FR)</label>
+                <input type="text" id="service4" value="Programme personnalisé" required>
+              </div>
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇺🇸</span> Service 4 (EN)</label>
+                <input type="text" id="service4_en" placeholder="Personalized program">
+              </div>
             </div>
           </div>
           
@@ -696,9 +769,15 @@
               <label>Email</label>
               <input type="email" id="email" value="nassfit224@gmail.com" required>
             </div>
-            <div class="form-group">
-              <label>Message WhatsApp par défaut</label>
-              <input type="text" id="whatsapp_msg" value="Bonjour NASSFIT — J'ai une question sur les tarifs" required>
+            <div class="bilingual-group">
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇫🇷</span> Message WhatsApp (FR)</label>
+                <input type="text" id="whatsapp_msg" value="Bonjour NASSFIT — J'ai une question sur les tarifs" required>
+              </div>
+              <div class="lang-col">
+                <label class="lang-label"><span class="flag">🇺🇸</span> WhatsApp Message (EN)</label>
+                <input type="text" id="whatsapp_msg_en" placeholder="Hello NASSFIT — I have a question about pricing">
+              </div>
             </div>
             <div class="form-group">
               <label>Adresse physique</label>
@@ -715,7 +794,6 @@
             </div>
           </div>
           
-          QR Code
           <div class="form-section">
             <h3>📱 QR Code</h3>
             <div class="form-group">
@@ -758,7 +836,6 @@
         pricing_daily: "Journalier (session unique)",
         pricing_annual: "Annuel (forfait)",
         pricing_remarks_title: "Remarques :",
-        pricing_remarks_text: "Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l'inscription.",
         conditions_title: "Conditions / Informations générales",
         services_included_title: "Services inclus :",
 
@@ -775,14 +852,6 @@
         dress_label: "Tenue :",
         hygiene_label: "Hygiène :",
 
-        pricing_remarks_text: "Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l'inscription.",
-        condition_inscription_text: "Présenter une pièce d'identité et régler les frais d'inscription (80 000 GNF).",
-        condition_tenue_text: "Tenue de sport exigée — chaussures propres à porter uniquement dans la salle.",
-        condition_hygiene_text: "Serviette Obligatoire",
-        service1_text: "Coaching",
-        service2_text: "Accès équipements",
-        service3_text: "Suivi mensuel",
-        service4_text: "Programme personnalisé",
         hours_weekday_label: "Lundi — Vendredi :",
         hours_saturday_label: "Samedi :",
         hours_sunday_label: "Dimanche :"
@@ -804,7 +873,6 @@
         pricing_daily: "Daily (single session)",
         pricing_annual: "Annual (package)",
         pricing_remarks_title: "Remarks:",
-        pricing_remarks_text: "The above rates are indicative — final rates confirmed upon registration.",
         conditions_title: "Conditions / General Information",
         services_included_title: "Included services:",
 
@@ -821,14 +889,6 @@
         dress_label: "Dress code:",
         hygiene_label: "Hygiene:",
 
-        pricing_remarks_text: "The above rates are indicative — final rates confirmed upon registration.",
-        condition_inscription_text: "Present an ID and pay the registration fee (80,000 GNF).",
-        condition_tenue_text: "Sportswear required — clean shoes only inside the gym.",
-        condition_hygiene_text: "Towel required",
-        service1_text: "Coaching",
-        service2_text: "Equipment access",
-        service3_text: "Monthly monitoring",
-        service4_text: "Personalized program",
         hours_weekday_label: "Monday — Friday:",
         hours_saturday_label: "Saturday:",
         hours_sunday_label: "Sunday:"
@@ -865,46 +925,69 @@
     }
 
 
-  // Fonction appelée au clic sur un drapeau
-    function setLanguage(lang) {
-  // 1️⃣ Appliquer les traductions data-i18n
-  applyTranslation(lang);
+  // Retourne la version EN d'un champ si disponible, sinon FR (fallback)
+  function bi(data, key, lang) {
+    if (lang === 'en') {
+      const enVal = data[key + '_en'];
+      if (enVal && enVal.trim()) return enVal;
+    }
+    return data[key] || '';
+  }
 
-  // 2️⃣ Récupérer les données actuelles
+  // Applique la langue sur tout le contenu dynamique
+  function setLanguage(lang) {
+    // 1. Traductions statiques (data-i18n)
+    applyTranslation(lang);
+
+    // 2. Données stockées + migration des champs _en manquants
     let saved = localStorage.getItem(STORAGE_KEY);
     let data;
     if (!saved) {
-      data = getDefaultData(); // 🔁 recharge les valeurs par défaut
+      data = getDefaultData();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } else {
       data = JSON.parse(saved);
+      // Remplir les champs _en absents avec les valeurs par défaut
+      const defaults = getDefaultData();
+      Object.keys(defaults).forEach(key => {
+        if (key.endsWith('_en') && !data[key]) {
+          data[key] = defaults[key];
+        }
+      });
     }
 
-  // 3️⃣ Appliquer les textes traduits dans les zones publiques
-  const t = translations[lang];
+    const t = translations[lang];
 
-  // Tarifs (remarque)
-  document.getElementById('pricingRemarks').textContent = t.pricing_remarks_text;
+    // Sous-titre du club (bilingue)
+    document.getElementById('clubSubtitle').textContent = bi(data, 'clubSubtitle', lang);
 
-  // Conditions
-  document.getElementById('conditionsList').innerHTML = `
-    <li><strong>${t.hours_label}</strong> ${t.hours_weekday_label || 'Lundi — Vendredi'} : ${data.hours_weekday}; ${t.hours_saturday_label || 'Samedi'} : ${data.hours_saturday}; ${t.hours_sunday_label || 'Dimanche'} : ${data.hours_sunday}.</li>
-    <li><strong>${lang === 'fr' ? 'Inscription :' : 'Registration:'}</strong> ${t.condition_inscription_text}</li>
-    <li><strong>${lang === 'fr' ? 'Tenue :' : 'Dress code:'}</strong> ${t.condition_tenue_text}</li>
-    <li><strong>${lang === 'fr' ? 'Hygiène :' : 'Hygiene:'}</strong> ${t.condition_hygiene_text}</li>
-  `;
+    // Remarque tarifaire (bilingue)
+    document.getElementById('pricingRemarks').textContent = bi(data, 'pricing_remarks', lang);
 
-  // Services
-  document.getElementById('servicesList').innerHTML = `
-    <span class="chip">${t.service1_text}</span>
-    <span class="chip">${t.service2_text}</span>
-    <span class="chip">${t.service3_text}</span>
-    <span class="chip">${t.service4_text}</span>
-  `;
+    // Conditions (étiquettes traduites + contenu bilingue admin)
+    document.getElementById('conditionsList').innerHTML = `
+      <li><strong>${t.hours_label}</strong> ${t.hours_weekday_label} ${data.hours_weekday}; ${t.hours_saturday_label} ${data.hours_saturday}; ${t.hours_sunday_label} ${data.hours_sunday}.</li>
+      <li><strong>${t.registration_label}</strong> ${bi(data, 'condition_inscription', lang)}</li>
+      <li><strong>${t.dress_label}</strong> ${bi(data, 'condition_tenue', lang)}</li>
+      <li><strong>${t.hygiene_label}</strong> ${bi(data, 'condition_hygiene', lang)}</li>
+    `;
 
-  // Sauvegarder la langue actuelle
-  localStorage.setItem("language", lang);
-}
+    // Services (bilingues)
+    document.getElementById('servicesList').innerHTML = `
+      <span class="chip">${bi(data, 'service1', lang)}</span>
+      <span class="chip">${bi(data, 'service2', lang)}</span>
+      <span class="chip">${bi(data, 'service3', lang)}</span>
+      <span class="chip">${bi(data, 'service4', lang)}</span>
+    `;
+
+    // Bouton WhatsApp — message bilingue
+    const phone = data.phone || '';
+    const msg = bi(data, 'whatsapp_msg', lang);
+    document.getElementById('whatsappBtn').href =
+      `https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(msg)}`;
+
+    localStorage.setItem('language', lang);
+  }
 
     // Charger la langue sauvegardée
     const savedLang = localStorage.getItem("language") || "fr";
@@ -1071,23 +1154,27 @@
       
       // QR Code
       buildQRCode(data.qr_url);
-      
+
       // Footer
       document.getElementById('footerText').textContent = data.footer_text;
+
+      // Réappliquer la langue sauvegardée (traduit les éléments injectés dynamiquement)
+      const currentLang = localStorage.getItem('language') || 'fr';
+      setLanguage(currentLang);
     }
     
     // Load admin form data
     function loadAdminData() {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (!saved) return;
-      
-      const data = JSON.parse(saved);
+      const defaults = getDefaultData();
+      const data = saved ? Object.assign({}, defaults, JSON.parse(saved)) : defaults;
       
       document.getElementById('admin_username').value = data.admin_username || 'admin';
       document.getElementById('clubName_admin').value = data.clubName || 'NASSFIT';
       document.getElementById('clubSubtitle_admin').value = data.clubSubtitle || 'Club sportif — entraînements & coaching';
+      document.getElementById('clubSubtitle_en_admin').value = data.clubSubtitle_en || '';
       document.getElementById('logoUrl_admin').value = data.logoUrl || '';
-      
+
       document.getElementById('price_inscription').value = data.price_inscription || 80000;
       document.getElementById('price_1week').value = data.price_1week || 125000;
       document.getElementById('price_2weeks').value = data.price_2weeks || 250000;
@@ -1096,27 +1183,36 @@
       document.getElementById('price_daily').value = data.price_daily || 50000;
       document.getElementById('price_annual').value = data.price_annual || 6000000;
       document.getElementById('pricing_remarks').value = data.pricing_remarks || '';
-      
+      document.getElementById('pricing_remarks_en').value = data.pricing_remarks_en || '';
+
       document.getElementById('hours_weekday').value = data.hours_weekday || '07h à 22h';
       document.getElementById('hours_saturday').value = data.hours_saturday || '09h à 22h';
       document.getElementById('hours_sunday').value = data.hours_sunday || '09h à 15h';
-      
+
       document.getElementById('condition_inscription').value = data.condition_inscription || '';
+      document.getElementById('condition_inscription_en').value = data.condition_inscription_en || '';
       document.getElementById('condition_tenue').value = data.condition_tenue || '';
+      document.getElementById('condition_tenue_en').value = data.condition_tenue_en || '';
       document.getElementById('condition_hygiene').value = data.condition_hygiene || '';
-      
+      document.getElementById('condition_hygiene_en').value = data.condition_hygiene_en || '';
+
       document.getElementById('service1').value = data.service1 || 'Coaching';
+      document.getElementById('service1_en').value = data.service1_en || '';
       document.getElementById('service2').value = data.service2 || 'Accès équipements';
+      document.getElementById('service2_en').value = data.service2_en || '';
       document.getElementById('service3').value = data.service3 || 'Suivi mensuel';
+      document.getElementById('service3_en').value = data.service3_en || '';
       document.getElementById('service4').value = data.service4 || 'Programme personnalisé';
-      
+      document.getElementById('service4_en').value = data.service4_en || '';
+
       document.getElementById('phone').value = data.phone || '+224627436896';
       document.getElementById('email').value = data.email || 'nassfit224@gmail.com';
       document.getElementById('whatsapp_msg').value = data.whatsapp_msg || '';
+      document.getElementById('whatsapp_msg_en').value = data.whatsapp_msg_en || '';
       document.getElementById('address').value = data.address || 'Lambanyi, Conakry';
       document.getElementById('maps_link').value = data.maps_link || '';
       document.getElementById('contact_bg_image').value = data.contact_bg_image || '';
-      
+
       document.getElementById('qr_url').value = data.qr_url || '';
       document.getElementById('footer_text').value = data.footer_text || '©️ NASSFIT';
     }
@@ -1129,8 +1225,9 @@
         admin_username: document.getElementById('admin_username').value,
         clubName: document.getElementById('clubName_admin').value,
         clubSubtitle: document.getElementById('clubSubtitle_admin').value,
+        clubSubtitle_en: document.getElementById('clubSubtitle_en_admin').value,
         logoUrl: document.getElementById('logoUrl_admin').value,
-        
+
         price_inscription: parseInt(document.getElementById('price_inscription').value),
         price_1week: parseInt(document.getElementById('price_1week').value),
         price_2weeks: parseInt(document.getElementById('price_2weeks').value),
@@ -1139,27 +1236,36 @@
         price_daily: parseInt(document.getElementById('price_daily').value),
         price_annual: parseInt(document.getElementById('price_annual').value),
         pricing_remarks: document.getElementById('pricing_remarks').value,
-        
+        pricing_remarks_en: document.getElementById('pricing_remarks_en').value,
+
         hours_weekday: document.getElementById('hours_weekday').value,
         hours_saturday: document.getElementById('hours_saturday').value,
         hours_sunday: document.getElementById('hours_sunday').value,
-        
+
         condition_inscription: document.getElementById('condition_inscription').value,
+        condition_inscription_en: document.getElementById('condition_inscription_en').value,
         condition_tenue: document.getElementById('condition_tenue').value,
+        condition_tenue_en: document.getElementById('condition_tenue_en').value,
         condition_hygiene: document.getElementById('condition_hygiene').value,
-        
+        condition_hygiene_en: document.getElementById('condition_hygiene_en').value,
+
         service1: document.getElementById('service1').value,
+        service1_en: document.getElementById('service1_en').value,
         service2: document.getElementById('service2').value,
+        service2_en: document.getElementById('service2_en').value,
         service3: document.getElementById('service3').value,
+        service3_en: document.getElementById('service3_en').value,
         service4: document.getElementById('service4').value,
-        
+        service4_en: document.getElementById('service4_en').value,
+
         phone: document.getElementById('phone').value,
         email: document.getElementById('email').value,
         whatsapp_msg: document.getElementById('whatsapp_msg').value,
+        whatsapp_msg_en: document.getElementById('whatsapp_msg_en').value,
         address: document.getElementById('address').value,
         maps_link: document.getElementById('maps_link').value,
         contact_bg_image: document.getElementById('contact_bg_image').value,
-        
+
         qr_url: document.getElementById('qr_url').value,
         footer_text: document.getElementById('footer_text').value
       };
@@ -1207,6 +1313,7 @@
     
     function buildQRCode(url) {
       const container = document.getElementById('qrcode');
+      if (!container) return;
       container.innerHTML = '';
       new QRCode(container, {
         text: url,
@@ -1216,13 +1323,15 @@
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
       });
-      document.getElementById('qrTarget').textContent = url;
+      const target = document.getElementById('qrTarget');
+      if (target) target.textContent = url;
     }
     
     function getDefaultData() {
       return {
         clubName: 'NASSFIT',
         clubSubtitle: 'Club sportif — entraînements & coaching',
+        clubSubtitle_en: 'Sports club — training & coaching',
         logoUrl: '',
         price_inscription: 80000,
         price_1week: 125000,
@@ -1232,21 +1341,30 @@
         price_daily: 50000,
         price_annual: 6000000,
         pricing_remarks: 'Les tarifs ci-dessus sont indicatifs — tarifs définitifs lors de l\'inscription.',
+        pricing_remarks_en: 'The above rates are indicative — final rates confirmed upon registration.',
         hours_weekday: '07h à 22h',
         hours_saturday: '09h à 22h',
         hours_sunday: '09h à 15h',
 
         condition_inscription: 'Présenter une pièce d\'identité et régler les frais d\'inscription (80 000 GNF).',
+        condition_inscription_en: 'Present an ID and pay the registration fee (80,000 GNF).',
         condition_tenue: 'Tenue de sport exigée — chaussures propres à porter uniquement dans la salle.',
+        condition_tenue_en: 'Sportswear required — clean shoes only inside the gym.',
         condition_hygiene: 'Serviette Obligatoire',
+        condition_hygiene_en: 'Towel required',
         service1: 'Coaching',
+        service1_en: 'Coaching',
         service2: 'Accès équipements',
+        service2_en: 'Equipment access',
         service3: 'Suivi mensuel',
+        service3_en: 'Monthly monitoring',
         service4: 'Programme personnalisé',
-        
+        service4_en: 'Personalized program',
+
         phone: '+224627436896',
         email: 'nassfit224@gmail.com',
         whatsapp_msg: 'Bonjour NASSFIT — J\'ai une question sur les tarifs',
+        whatsapp_msg_en: 'Hello NASSFIT — I have a question about pricing',
         address: 'Lambanyi, Conakry',
         maps_link: 'https://maps.app.goo.gl/K2kkYigAmH5RQqWT6',
         contact_bg_image: '',
